@@ -1,0 +1,8 @@
+{
+  "name": "my-gas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/f-koki/my-gas.git",
+  "author": "f-koki <57610613+f-koki@users.noreply.github.com>",
+  "license": "MIT"
+}
