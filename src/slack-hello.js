@@ -16,11 +16,9 @@ function doMessage(e) {
 
 // slackの入力を受け取る
 function doPost(e) {
-  if (e.parameter.user_name === "slackbot") return;
-  var data = e.parameter.text.split(" ");
-  record(data);
-  postSlack("入力完了！");
+  postSlack("入力完了");
 }
+
 
 // SpreadSheetに書き込む
 function record(data) {
