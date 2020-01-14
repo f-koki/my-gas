@@ -10,7 +10,7 @@ function postSlack(text) {
 
 // リマインドメッセージ
 function doMessage(e) {
-  var message = "hello world";
+  var message = "hello world!!!";
   postSlack(message);
 }
 
