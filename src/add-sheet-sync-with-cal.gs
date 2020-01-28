@@ -1,5 +1,8 @@
+// 参照するGoogle Calendar ID
+const REFERENCE_CAL_ID = ''
+
 function add_new_sheet_sync_with_cal() {
-  var cal = CalendarApp.getCalendarById('fukushimakoki0108@gmail.com');
+  var cal = CalendarApp.getCalendarById(REFERENCE_CAL_ID);
   var events = cal.getEventsForDay(new Date())
   events.forEach(function (event) {
     if (event.getTitle().match('[DEFPAY]')) {
@@ -17,15 +20,13 @@ function add_new_sheet_sync_with_cal() {
   })
 }
 
-// 参照するGoogle Calendar ID
-const REFERENCE_CAL_ID = ''
 // trackする予定のタイトルに含まれる文字列
 const KEYWORD = '[Defpay Product]'
 // コピーするシートの名前
 const ORIGIN_SHEET_NAME = '(template)'
 
 function copy_template_sync_with_calendar() {
-  var cal = CalendarApp.getCalendarById();
+  var cal = CalendarApp.getCalendarById(REFERENCE_CAL_ID);
   var events = cal.getEventsForDay(new Date())
   events.forEach(function (event) {
     if (event.getTitle().match(KEYWORD)) {
