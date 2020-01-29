@@ -1,6 +1,3 @@
-// 参照するGoogle Calendar ID
-const REFERENCE_CAL_ID = ''
-
 function add_new_sheet_sync_with_cal() {
   var cal = CalendarApp.getCalendarById(REFERENCE_CAL_ID);
   var events = cal.getEventsForDay(new Date())
@@ -20,8 +17,12 @@ function add_new_sheet_sync_with_cal() {
   })
 }
 
+// 参照するGoogle Calendar ID
+const REFERENCE_CAL_ID = ''
+
 // trackする予定のタイトルに含まれる文字列
 const KEYWORD = '[Defpay Product]'
+
 // コピーするシートの名前
 const ORIGIN_SHEET_NAME = '(template)'
 
@@ -37,8 +38,8 @@ function copy_template_sync_with_calendar() {
       }
       var newSheet = originSheet.copyTo(ss)
       newSheet.setName(createSheetNameByDate(new Date()))
-      newSheet.activate()
       // change active sheet
+      newSheet.activate()
       SpreadsheetApp.getActive().moveActiveSheet(1)
     }
   })
@@ -46,11 +47,12 @@ function copy_template_sync_with_calendar() {
 
 function createSheetNameByDate(date) {
   var lastDate = new Date(date.setDate(date.getDate() - 1))
-  var startDate = new Date(date.setDate(date.getDate() - 6))
+  var startDate = new Date(date.setDate(date.getDate() - 13))
   var sheetName = getDateString(startDate) + " - " + getDateString(lastDate)
   return sheetName
 }
 
 function getDateString(date) {
-  return (date.getMonth() + 1).toString() + "/" + (date.getDate())
+  // return (date.getMonth() + 1).toString() + "/" + (date.getDate())
+  return Utilities.formatDate(date, 'Asia/Tokyo', 'M/d')
 }
